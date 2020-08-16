@@ -52,18 +52,21 @@ class CartController extends Controller
             }
         }
 
-        // Making data to send to view
-        $prod_to_save = json_decode($cart->products, true);
-        $prod_ids = array_keys($prod_to_save);
-        $products_to_view = Product::whereIn('id', $prod_ids)->get();
-        $total = 0;
-        
-        foreach($products_to_view as $product_to_view) {
-            $product_to_view['amount'] = $prod_to_save[$product_to_view->id][1];
-            $total += $product_to_view->price * $product_to_view->amount;
-        }
-
-        return view('cart.index')->with(['products'=>$products_to_view, 'total' => $total]);
+        if($cart) {
+            // Making data to send to view
+            $prod_to_save = json_decode($cart->products, true);
+            $prod_ids = array_keys($prod_to_save);
+            $products_to_view = Product::whereIn('id', $prod_ids)->get();
+            $total = 0;
+            
+            foreach($products_to_view as $product_to_view) {
+                $product_to_view['amount'] = $prod_to_save[$product_to_view->id][1];
+                $total += $product_to_view->price * $product_to_view->amount;
+            }
+            return view('cart.index')->with(['products'=>$products_to_view, 'total' => $total]);
+        } else {
+            return view('cart.noItems');
+        }        
     }
 
     public function checkout(Request $request) {

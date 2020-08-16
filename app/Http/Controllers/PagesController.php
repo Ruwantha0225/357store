@@ -17,6 +17,7 @@ class PagesController extends Controller
         return view('pages.admin');
     }
     public function cart(){
+        return 'test';
         return view('pages.cart');
     }
     public function checkout(){
