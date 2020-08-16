@@ -79,4 +79,22 @@ class CartController extends Controller
 
         return redirect('/');
     }
+
+    public function removeItem($id) {
+        $user_id = Auth::user()->id;
+
+        $cart = Cart::where([ ['cus_id', '=', $user_id], ['checked_out', '=', '0'] ])->first();
+        $products = json_decode($cart->products, true);
+        
+        unset($products[$id]);
+
+        if(count($products) == 0) {
+            $cart->delete();
+        } else {
+            $cart->products = json_encode($products);
+            $cart->save();
+        }
+
+        return redirect('/product/addtocart');
+    }
 }

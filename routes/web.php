@@ -53,3 +53,5 @@ Route::prefix('admin')->group(function() {
 Route::post('checkout', 'CartController@checkout')->name('checkout');
 
 Route::get('search', 'ProductController@list')->name('search');
+
+Route::get('removefromcart/{id}', 'CartController@removeItem')->name('removefromcart');

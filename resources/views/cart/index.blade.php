@@ -5,7 +5,10 @@
         <div class="row">
             @foreach ($products as $product)
                 <div class="col-md-4">
-                    <h2> {{ $product->name }} </h2>
+                    <h2>
+                        {{ $product->name }}
+                        <a href="/removefromcart/{{$product->id}}" class="btn btn-outline-danger btn-sm">X</a>
+                    </h2>
                     <img src="/storage/images/products/{{$product->img}}" style="width: 200px;" />
                     <p> {{ $product->price }} </p>
                     <p> {{ $product->amount }} </p>
