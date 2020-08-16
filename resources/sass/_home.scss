@@ -1,0 +1,48 @@
+.home {
+    h1 {
+        color: $theme-blue;
+        margin: 10px auto;
+    }
+    .banner {
+        margin-top: -25px;
+        height: 90vh;
+        .col-6 {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            .bg-blue {
+                background: $theme-blue;
+                width: 80%;
+                height: 100%;
+                position: relative;
+                img {
+                    position: absolute;
+                    width: 50%;
+                    right: -20px;
+                    bottom: -1px;
+                }
+            }
+            .shop-btn {
+                display: inline-block;
+                border: 1px solid $theme-blue;
+                border-radius: 30px;
+                color: #222;
+                font-weight: 500;
+                padding: 12px 50px;
+                background: $theme-blue;
+                color: #fff;
+                transition: all .4s ease;
+            }
+        }
+    }
+    .contact {
+        .row {
+            .col-md-4 {
+                i {
+                    font-size: 1.5em;
+                    color: $theme-blue;
+                }
+            }
+        }
+    }
+}

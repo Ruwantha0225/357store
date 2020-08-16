@@ -1,0 +1,22 @@
+.footer {
+    margin-left: 1px;
+    margin-top: 30px;
+    box-shadow: -1px -1px 10px #000;
+    .links {
+        a.nav-link {
+            font-size: 1.3em;
+        }
+    }
+    .follow-us {
+        h2 {
+            margin-bottom: 20px;
+        }
+        a {
+            font-size: 1.8em;
+        }
+    }
+    img {
+        width: 50%;
+        border-radius: 50%;
+    }
+}
