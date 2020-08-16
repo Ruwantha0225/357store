@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-use App\Admin;
+use App\User;
 use Auth;
 use Session;
 
 class ProductController extends Controller
 {
-    // public function __construct() {
-    //     $this->middleware('auth:admin', ['except' => [ 'list', 'show' ]]);
-    // }
-
     public function index() {
         $products = Product::where('admin', Auth::user()->id)->get();
 
@@ -49,7 +45,7 @@ class ProductController extends Controller
 
     public function show($id) {
         $product = Product::find($id);
-        $admin = Admin::find($product->admin);
+        $admin = User::find($product->admin);
 
         return view('product.view')->with(['product' => $product, 'admin' => $admin]);
     }

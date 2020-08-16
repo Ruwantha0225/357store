@@ -16,7 +16,7 @@ class AdminController extends Controller
         if(!Auth::user()->is_admin) {
             return redirect('/');
         }
-        $sellings = Cart::where('checked_out', 1)->orderBy('updated_at', 'desc')->get();
+        $sellings = Cart::where([['checked_out', 1], ['owner_id', Auth::user()->id]])->orderBy('updated_at', 'desc')->get();
         return view('admin.index')->with('sellings', $sellings);
     }
 

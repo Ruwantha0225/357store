@@ -33,6 +33,7 @@ class CartController extends Controller
                     ]
                 ];
                 $cart->products = json_encode($prod_to_save);
+                $cart->owner_id = $product->admin;
                 $cart->save();
             } else {
                 $prod_to_save = json_decode($cart->products);
@@ -47,6 +48,7 @@ class CartController extends Controller
                         1
                     ];
                     $cart->products = json_encode($prod_to_save);
+                    $cart->owner_id = $product->admin;
                     $cart->save();
                 }
             }
